@@ -1,0 +1,63 @@
+<aura:component >    
+    
+    <aura:attribute name="DepartmentInstance" type="Department__c"/>
+    <aura:attribute name="rowIndex" type="String"/>
+    <aura:registerEvent name="DeleteEvent" type="c:DeleteEvent"/> 
+    <aura:registerEvent name="EvenEdit" type="c:EvenEdit"/> 
+    <aura:attribute name="EditMode" type="boolean" default="false"/>
+    
+    
+    <!-- Table Row -->   
+    <tr class="slds-text-title_caps" aura:id="blankRow">
+        <td> 
+            {!v.DepartmentInstance.Id__c}
+        </td>
+        <td>
+            {!v.DepartmentInstance.Name}
+        </td>
+        <td>
+            {!v.DepartmentInstance.Salary__c}
+        </td>
+        <td>
+            {!v.DepartmentInstance.Business_Unit__c}
+        </td>
+        <td>
+            <a onclick="{!c.editClick}">
+                <lightning:icon iconName="utility:edit" class="slds-icon slds-icon_small" size="small" alternativeText="add"/>
+                <span class="slds-assistive-text">Edit Icon</span>
+            </a>    
+            <a onclick="{!c.removeRow}">
+                <lightning:icon variant="error" iconName="utility:delete" class="slds-icon slds-icon_small" size="small" alternativeText="icon"/>
+                <span class="slds-assistive-text">Delete Icon</span>
+            </a>
+            
+        </td> 
+    </tr> 
+    
+    <tr class="slds-text-title_caps hide" aura:id="editRow">
+        <td> 
+            {!v.DepartmentInstance.Id__c}
+        </td>
+        <td>
+            <ui:inputText class="slds-input" value="{!v.DepartmentInstance.Name}" />
+        </td>
+        <td>
+            <ui:inputText class="slds-input" value="{!v.DepartmentInstance.Salary__c}" />
+        </td>
+        <td>
+            <ui:inputText class="slds-input" value="{!v.DepartmentInstance.Business_Unit__c}" />
+        </td>
+        <td>
+            <a onclick="{!c.editRow}">
+                <lightning:icon iconName="utility:save" class="slds-icon slds-icon_small" size="small" alternativeText="add"/>
+                <span class="slds-assistive-text">Edit Icon</span>
+            </a>  
+            <a onclick="{!c.cancelRow}">
+                <lightning:icon variant="error" iconName="utility:close" class="slds-icon slds-icon_small" size="small" alternativeText="icon"/>
+                <span class="slds-assistive-text">Cancel Icon</span>
+            </a>
+        </td> 
+    </tr>
+    
+
+</aura:component>

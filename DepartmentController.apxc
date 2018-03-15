@@ -1,0 +1,80 @@
+public with sharing class DepartmentController {
+    
+    @AuraEnabled
+    public List<Department__c> dept;
+    
+    @AuraEnabled
+    public integer offst;
+    
+    @AuraEnabled
+    public integer total;
+    
+    @AuraEnabled
+    public boolean hasprev;
+    
+    @AuraEnabled
+    public boolean hasnext;
+    
+    private static integer pagesize=6;
+    private static integer offset;
+    
+    @AuraEnabled
+    public static DepartmentController getDepartments(boolean next,boolean prev,decimal off) {
+         offset = (integer)off;
+        System.debug('Offset----'+offset);
+
+        integer listlength = [Select count() from Department__c where name!=null];
+        DepartmentController dc = new DepartmentController();
+        List<Department__c> li = new list<Department__c>();
+        if(!schema.sobjecttype.Department__c.isaccessible()){
+            li = new list<Department__c>();
+        }else{
+            if(next==false && prev==false){
+                li = [SELECT  Id__c, Name, Salary__c, Business_Unit__c FROM Department__c LIMIT :pagesize OFFSET :offset];
+            }else if(next==true && (offset+pagesize)<=listlength){
+                offset=offset+pagesize;
+                li = [SELECT  Id__c, Name, Salary__c, Business_Unit__c FROM Department__c  LIMIT :pagesize OFFSET :offset];
+            }else if(prev==true && offset>0){
+                offset=offset-pagesize;
+                li = [SELECT  Id__c, Name, Salary__c, Business_Unit__c FROM Department__c  LIMIT :pagesize OFFSET :offset];
+            }
+        }
+        dc.dept = li;
+        dc.offst = offset;
+        dc.hasprev = hasprev(offset);   
+        dc.hasnext = hasnxt(offset,listlength,pagesize);
+        return dc;
+    }
+    
+    @AuraEnabled
+    public static Department__c saveDepartment(Department__c Department) {
+        upsert department;
+        return department;
+    }
+    
+    @Auraenabled
+    public static List<Department__c> deleteDepartmentByName(string name, boolean next,boolean prev,decimal off)
+    {
+         offset = (integer)off;
+        integer listlength = [Select count() from Department__c where name!=null];
+        delete [Select name from Department__c where name=:name];
+        
+        List<Department__c> li = new list<Department__c>();
+        li = [SELECT  Id__c, Name, Salary__c, Business_Unit__c FROM Department__c  LIMIT :pagesize OFFSET :offset];
+        return li;
+    }
+    
+     private static boolean hasprev(integer off){
+            if(off>0)
+                return false;
+            return true; 
+    }
+    
+   	private static boolean hasnxt(integer off,integer li,integer ps){
+        if(off+ps<li)
+            return false;
+        return true;
+    }    
+    
+    
+}
