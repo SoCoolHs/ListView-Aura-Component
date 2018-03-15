@@ -22,7 +22,6 @@
         // for Display Model,set the "isOpen" attribute to "true"
         component.set("v.isOpen", true);
     },
-    
     closeModel: function(component, event, helper) {
         // for Hide/Close Model,set the "isOpen" attribute to "Fasle"  
         component.set("v.isOpen", false);
@@ -45,7 +44,6 @@
             helper.fetchDepartments(component,next,prev); 
         }
     },
-    
     removeDeletedRow: function(component, event, helper) {
         // get the selected row Index for delete, from Lightning Event Attribute  
         var deleteRecord = event.getParam("DepartmentInstance");
@@ -55,7 +53,6 @@
         var next = component.get("v.next");
         var prev = component.get("v.prev");
         helper.deleteDepartmentByName(component, jsonString["Name"], next, prev, offset);
-        
     },
     saveEditRow: function(component, event, helper) {
         // Create the new expense
