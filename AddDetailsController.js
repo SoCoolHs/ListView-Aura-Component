@@ -51,26 +51,26 @@
         var deleteRecord = event.getParam("DepartmentInstance");
         var jsonString = JSON.parse(JSON.stringify(deleteRecord));
         console.log(jsonString["Name"]);
-         var offset = component.get("v.offset");
-         var next = component.get("v.next");
-         var prev = component.get("v.prev");
+        var offset = component.get("v.offset");
+        var next = component.get("v.next");
+        var prev = component.get("v.prev");
         helper.deleteDepartmentByName(component, jsonString["Name"], next, prev, offset);
         
     },
     saveEditRow: function(component, event, helper) {
-            // Create the new expense
-            var newExpense = event.getParam("DepartmentInstance");
-            helper.createExpense(component, newExpense, false);
+        // Create the new expense
+        var newExpense = event.getParam("DepartmentInstance");
+        helper.createExpense(component, newExpense, false);
     },
     // this function automatic call by aura:waiting event  
     showSpinner: function(component, event, helper) {
-       // make Spinner attribute true for display loading spinner 
+        // make Spinner attribute true for display loading spinner 
         component.set("v.Spinner", true); 
-   },
+    },
     
- 	// this function automatic call by aura:doneWaiting event 
+    // this function automatic call by aura:doneWaiting event 
     hideSpinner : function(component,event,helper){
-     // make Spinner attribute to false for hide loading spinner    
-       component.set("v.Spinner", false);
+        // make Spinner attribute to false for hide loading spinner    
+        component.set("v.Spinner", false);
     }
 })

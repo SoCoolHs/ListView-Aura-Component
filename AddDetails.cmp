@@ -27,7 +27,7 @@
             </div>
         </div>
     </aura:if>
-  <!-- Loading spinner end--> 
+    <!-- Loading spinner end--> 
     <div  style="background-color:white;padding:50px">
         <button class="slds-button slds-button--brand" style="float:right;margin-bottom:20px" onclick="{!c.openModel}">Add </button>  
         <!--Use aura:if tag to display Model Box, on the bese of conditions. [isOpen boolean attribute] -->   
@@ -77,7 +77,7 @@
             
         </aura:if>
         <!--Table Part-->   
-		<span class="slds-text-heading--small slds-truncate"> Department Info</span>        
+        <span class="slds-text-heading--small slds-truncate"> Department Info</span>        
         <table class="slds-table slds-table_bordered slds-table_cell-buffer" > 
             <thead>
                 <tr class="slds-text-title_caps">
@@ -105,18 +105,18 @@
             </tbody>
         </table>
         <div class="slds-margin-top" style="margin-top:20px">
-        <ui:button class="slds-button slds-button--neutral slds-p-horizontal--xx-small slds-m-right--x-small slds-float--right " press="{!c.doNext}" disabled="{!v.next}" >
-            <span class="slds-icon slds-icon-text-default">
-                <c:svg class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS/assets/icons/utility-sprite/svg/symbols.svg#chevronright" />
-                <span class="slds-assistive-text">Next</span>
-            </span>                 
-        </ui:button>
-        <ui:button class="slds-button slds-button--neutral slds-p-horizontal--xx-small slds-m-right--x-small slds-float--right" press="{!c.doPrevious}" disabled="{!v.prev}">
-            <span class="slds-icon slds-icon-text-default">
-                <c:svg class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS/assets/icons/utility-sprite/svg/symbols.svg#chevronleft" />
-                <span class="slds-assistive-text">Previous</span>
-            </span>               
-        </ui:button> 
+            <ui:button class="slds-button slds-button--neutral slds-p-horizontal--xx-small slds-m-right--x-small slds-float--right " press="{!c.doNext}" disabled="{!v.next}" >
+                <span class="slds-icon slds-icon-text-default">
+                    <c:svg class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS/assets/icons/utility-sprite/svg/symbols.svg#chevronright" />
+                    <span class="slds-assistive-text">Next</span>
+                </span>                 
+            </ui:button>
+            <ui:button class="slds-button slds-button--neutral slds-p-horizontal--xx-small slds-m-right--x-small slds-float--right" press="{!c.doPrevious}" disabled="{!v.prev}">
+                <span class="slds-icon slds-icon-text-default">
+                    <c:svg class="slds-button__icon slds-button__icon--large" xlinkHref="/resource/SLDS/assets/icons/utility-sprite/svg/symbols.svg#chevronleft" />
+                    <span class="slds-assistive-text">Previous</span>
+                </span>               
+            </ui:button> 
         </div>
     </div>
 </aura:component>

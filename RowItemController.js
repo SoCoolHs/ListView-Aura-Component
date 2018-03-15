@@ -1,7 +1,7 @@
 ({
     
     removeRow : function(component, event, helper){
-       component.getEvent("DeleteEvent").setParams({"DepartmentInstance" : component.get("v.DepartmentInstance") }).fire();
+        component.getEvent("DeleteEvent").setParams({"DepartmentInstance" : component.get("v.DepartmentInstance") }).fire();
     },
     editRow : function(component, event, helper){
         var cmpTarget = component.find('editRow');
@@ -15,7 +15,7 @@
         $A.util.removeClass(cmpTarget, 'hide');
         var sourceTarget = component.find('blankRow');
         $A.util.addClass(sourceTarget, 'hide');
-
+        
     },
     cancelRow: function(component, event, helper){
         var cmpTarget = component.find('editRow');

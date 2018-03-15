@@ -20,9 +20,9 @@ public with sharing class DepartmentController {
     
     @AuraEnabled
     public static DepartmentController getDepartments(boolean next,boolean prev,decimal off) {
-         offset = (integer)off;
+        offset = (integer)off;
         System.debug('Offset----'+offset);
-
+        
         integer listlength = [Select count() from Department__c where name!=null];
         DepartmentController dc = new DepartmentController();
         List<Department__c> li = new list<Department__c>();
@@ -55,7 +55,7 @@ public with sharing class DepartmentController {
     @Auraenabled
     public static List<Department__c> deleteDepartmentByName(string name, boolean next,boolean prev,decimal off)
     {
-         offset = (integer)off;
+        offset = (integer)off;
         integer listlength = [Select count() from Department__c where name!=null];
         delete [Select name from Department__c where name=:name];
         
@@ -64,13 +64,13 @@ public with sharing class DepartmentController {
         return li;
     }
     
-     private static boolean hasprev(integer off){
-            if(off>0)
-                return false;
-            return true; 
+    private static boolean hasprev(integer off){
+        if(off>0)
+            return false;
+        return true; 
     }
     
-   	private static boolean hasnxt(integer off,integer li,integer ps){
+    private static boolean hasnxt(integer off,integer li,integer ps){
         if(off+ps<li)
             return false;
         return true;
